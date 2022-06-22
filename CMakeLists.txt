@@ -28,7 +28,7 @@ target_link_libraries(${PROJECT_NAME}
 
 add_definitions(-DOATPP_SWAGGER_RES_PATH="${OATPP_BASE_DIR}/bin/oatpp-swagger/res")
 add_definitions(-DSWAGGER_ROOT_PATH="${OATPP_SWAGGER_RES_PATH}")
-add_definitions(-DSWAGGER_UI_PATH="ui")
+add_definitions(-DSWAGGER_UI_PATH="/")
 
 set(EXE_NAME "${PROJECT_NAME}.exe")
 foreach(CPPFILE ${EXAMPLES})

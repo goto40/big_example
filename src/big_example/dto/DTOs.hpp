@@ -14,7 +14,11 @@ class MyDto : public oatpp::DTO {
   
   DTO_INIT(MyDto, DTO)
   
-  DTO_FIELD(Int32, statusCode);
+
+  DTO_FIELD_INFO(message) {
+    info->description = "this is our main demo data!"; 
+    info->required = true; // mark field as required
+  }
   DTO_FIELD(String, message);
   
 };
