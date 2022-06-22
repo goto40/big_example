@@ -56,8 +56,8 @@ public:
     oatpp::swagger::DocumentInfo::Builder builder;
 
     builder
-    .setTitle("User entity service")
-    .setDescription("CRUD API Example project with swagger docs")
+    .setTitle("'big example'-demo")
+    .setDescription("Example project with swagger docs")
     .setVersion("1.0")
     .setContactName("Pierre")
     .setContactUrl("https://no-contact/")
