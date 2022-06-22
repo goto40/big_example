@@ -14,13 +14,20 @@ void run() {
   OATPP_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, router);
 
   /* Create MyController and add all of its endpoints to router */
-  router->addController(std::make_shared<MyController>());
+  auto myController = std::make_shared<MyController>();
+  router->addController(myController);
 
   /* Get connection handler component */
   OATPP_COMPONENT(std::shared_ptr<oatpp::network::ConnectionHandler>, connectionHandler);
 
   /* Get connection provider component */
   OATPP_COMPONENT(std::shared_ptr<oatpp::network::ServerConnectionProvider>, connectionProvider);
+
+
+  /* create the swagger controller */
+  auto swaggerController = oatpp::swagger::Controller::createShared(myController->getEndpoints());
+  router->addController(swaggerController);
+
 
   /* Create server which takes provided TCP connections and passes them to HTTP connection handler */
   oatpp::network::Server server(connectionProvider, connectionHandler);

@@ -4,6 +4,7 @@
 #include "oatpp/web/server/HttpConnectionHandler.hpp"
 
 #include "oatpp/network/tcp/server/ConnectionProvider.hpp"
+#include "oatpp-swagger/Controller.hpp"
 
 #include "oatpp/parser/json/mapping/ObjectMapper.hpp"
 
@@ -45,6 +46,34 @@ public:
     return oatpp::parser::json::mapping::ObjectMapper::createShared();
   }());
 
+  /**
+  *  General API docs info
+  */
+  OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::swagger::DocumentInfo>, swaggerDocumentInfo)([] {
+
+    oatpp::swagger::DocumentInfo::Builder builder;
+
+    builder
+    .setTitle("User entity service")
+    .setDescription("CRUD API Example project with swagger docs")
+    .setVersion("1.0")
+    .setContactName("Pierre")
+    .setContactUrl("https://no-contact/")
+    .setLicenseName("MIT License")
+    .setLicenseUrl("https://opensource.org/licenses/MIT")
+    .addServer("http://localhost:8000", "server on localhost");
+    return builder.build();
+
+  }());
+
+
+  /**
+  *  Swagger-Ui Resources (<oatpp-examples>/lib/oatpp-swagger/res)
+  */
+  OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::swagger::Resources>, swaggerResources)([] {
+    // Make sure to specify correct full path to oatpp-swagger/res folder !!!
+    return oatpp::swagger::Resources::loadResources(OATPP_SWAGGER_RES_PATH);
+  }());
 };
 
 #endif /* AppComponent_hpp */

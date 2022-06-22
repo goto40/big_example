@@ -23,8 +23,12 @@ add_library(${PROJECT_NAME} ${SRC} ${version_file})
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME}
     PUBLIC oatpp::oatpp
-    PUBLIC oatpp::oatpp-test
+    PUBLIC oatpp::oatpp-swagger
 )
+
+add_definitions(-DOATPP_SWAGGER_RES_PATH="${OATPP_BASE_DIR}/bin/oatpp-swagger/res")
+add_definitions(-DSWAGGER_ROOT_PATH="${OATPP_SWAGGER_RES_PATH}")
+add_definitions(-DSWAGGER_UI_PATH="ui")
 
 set(EXE_NAME "${PROJECT_NAME}.exe")
 foreach(CPPFILE ${EXAMPLES})
