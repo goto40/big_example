@@ -3,6 +3,9 @@ project(big_example)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_package(oatpp 1.3.0 REQUIRED)
+find_package(oatpp-swagger 1.3.0 REQUIRED)
+
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 
 include(Version) 
@@ -17,6 +20,10 @@ file(GLOB EXAMPLES examples/*.cpp)
 
 add_library(${PROJECT_NAME} ${SRC} ${version_file})
 target_include_directories(${PROJECT_NAME} PUBLIC src)
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC oatpp::oatpp
+    PUBLIC oatpp::oatpp-test
+)
 
 set(EXE_NAME "${PROJECT_NAME}.exe")
 foreach(CPPFILE ${EXAMPLES})
