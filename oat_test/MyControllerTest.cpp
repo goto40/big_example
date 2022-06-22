@@ -1,6 +1,6 @@
 #include "MyControllerTest.hpp"
 
-#include "controller/MyController.hpp"
+#include "big_example/controller/MyController.hpp"
 
 #include "app/MyApiTestClient.hpp"
 #include "app/TestComponent.hpp"

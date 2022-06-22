@@ -16,6 +16,7 @@ enable_testing()
 
 file(GLOB_RECURSE SRC src/*.cpp)
 file(GLOB_RECURSE TST test/*.cpp)
+file(GLOB_RECURSE OAT_TST oat_test/*.cpp)
 file(GLOB EXAMPLES examples/*.cpp)
 
 add_library(${PROJECT_NAME} ${SRC} ${version_file})
@@ -41,6 +42,15 @@ target_include_directories(${UNITTEST} PRIVATE ${CATCH_INCLUDE_PATH})
 target_link_libraries(${UNITTEST} ${PROJECT_NAME})
 
 add_test(NAME unittest COMMAND ${UNITTEST})
+
+set(OAT_UNITTEST "${PROJECT_NAME}_oat_unit_tests")
+add_executable(${OAT_UNITTEST} ${OAT_TST})
+target_include_directories(${OAT_UNITTEST} PRIVATE src)
+target_include_directories(${OAT_UNITTEST} PRIVATE oat_test)
+target_link_libraries(${OAT_UNITTEST} ${PROJECT_NAME})
+target_link_libraries(${OAT_UNITTEST} PUBLIC oatpp::oatpp-test)
+
+add_test(NAME oat_unittest COMMAND ${OAT_UNITTEST})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
