@@ -9,3 +9,4 @@ RUN cd oatpp/ && mkdir build && cd build && cmake .. && make install
 RUN git clone https://github.com/oatpp/oatpp-swagger.git
 RUN cd oatpp-swagger/ && mkdir build && cd build && cmake .. && make install 
 
+RUN sudo apt install -y nodejs npm
