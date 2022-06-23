@@ -1,0 +1,85 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "'big example'-demo",
+      "description": "Example project with swagger docs",
+      "contact": {
+        "name": "Pierre",
+        "url": "https://no-contact/"
+      },
+      "license": {
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "version": "1.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8000",
+        "description": "server on localhost"
+      }
+    ],
+    "paths": {
+      "/data": {
+        "get": {
+          "summary": "Retrieve the 'data'",
+          "operationId": "getData",
+          "tags": [
+            "demo"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MyDto"
+                  }
+                }
+              }
+            }
+          },
+          "parameters": []
+        },
+        "put": {
+          "summary": "Update the 'data'",
+          "operationId": "updateData",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyDto"
+                }
+              }
+            }
+          },
+          "tags": [
+            "demo"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "parameters": []
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "MyDto": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "this is our main demo data!"
+            }
+          },
+          "required": [
+            "message"
+          ]
+        }
+      }
+    }
+  }
