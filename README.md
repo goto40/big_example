@@ -3,9 +3,17 @@
 A playground to play with different technologies and libs...
 
 Structure
- * src: main code
- * test: unittests
- * oat_test: oat++ unittests
+ * cpp_openapi_with_oat: C++ Service
+    * src: main code
+    * test: unittests
+    * oat_test: oat++ unittests
+    * `sh build.sh` (then start ./App in build folder)
+ * api-spec: extracted openapi spec (manually from running C++ application/swagger UI)
+ * ts_from_cpp_openapi: Typescript test for C++ Service
+    * `npm i`
+    * `npm test`
+    * (to update code if a new api-spec is extracted: `npm run update-lib`)
+    * Note TODO: sometime the tests fails? Unclear... it works interactively...
 
 ## Snippets
 
