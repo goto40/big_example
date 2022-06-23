@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "update-lib-from-swagger": "npx openapi-typescript-codegen   --input http://localhost:8000/api-docs/oas-3.0.0.json   --output ./src   --exportSchemas true"
   },
   "keywords": [],
   "author": "",
