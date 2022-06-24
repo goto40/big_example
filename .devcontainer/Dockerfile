@@ -11,3 +11,6 @@ RUN cd oatpp-swagger/ && mkdir build && cd build && cmake .. && make install
 
 RUN sudo apt install -y nodejs npm
 RUN sudo apt install -y openjdk-17-jre
+
+RUN sudo apt install -y pip
+RUN pip install pytest requests
