@@ -13,7 +13,7 @@ Structure
     * `npm i`
     * `npm test`
     * (to update code if a new api-spec is extracted: `npm run update-lib`)
-    * Note TODO: sometime the tests fails? Unclear... it works interactively...
+    * Note Todo (Solution: Updated Ata Is Async,  Fix Call! ): sometime the tests fails? Unclear... it works interactively...
 
 ## Snippets
 
