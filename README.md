@@ -27,3 +27,9 @@ After building the SW, you can run ./App and open http://localhost:8000
 
 ## py_manual_request
    * `py.test` (pytest and requests are installed in the docker)
+
+
+## py_from_cpp_openapi: Typescript test for C++ Service
+   * (to update code from running ./App: `./update-api`)
+   * `cd big-example-demo-client`
+   * `py.test`
