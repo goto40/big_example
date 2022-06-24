@@ -16,7 +16,7 @@ A playground to play with different technologies and libs...
 After building the SW, you can run ./App and open http://localhost:8000 
 (here you find a link to the spec.):
 
-<img src="doc/swagger.png" width="200" />
+<img src="doc/swagger.png" width="350" />
 
 
 ## ts_from_cpp_openapi: Typescript test for C++ Service
