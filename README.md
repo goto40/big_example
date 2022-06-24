@@ -21,4 +21,3 @@ After building the SW, you can run ./App and open http://localhost:8000
    * `npm i`
    * `npm test`
    * (to update code if a new api-spec is extracted: `npm run update-lib`)
-   * Note Todo (Solution: Updated Ata Is Async,  Fix Call! ): sometime the tests fails? Unclear... it works interactively...
