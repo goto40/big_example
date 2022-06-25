@@ -1,6 +1,6 @@
-# big_example
-
 A playground to play with different technologies and libs...
+
+# C++ Web Service implemented with Oat++ 
 
 ## cpp_openapi_with_oat: C++ Oat Service
 
@@ -34,6 +34,9 @@ After building the SW, you can run ./App and open http://localhost:8000
    * `cd big-example-demo-client`
    * `py.test`
 
+
+# C++ MQTT Service 
+
 ## mosquitto
 
 Links: https://www.arubacloud.com/tutorial/how-to-install-and-secure-mosquitto-on-ubuntu-20-04.aspx
@@ -43,3 +46,7 @@ Try it out:
 
   * Shell 1: `mosquitto_sub -h localhost -t /demo/data0`
   * Shell 2: `mosquitto_pub -h localhost -t /demo/data0 -m "Hello"`
+
+## TODO: C++ MQTT Service
+
+  * Links: https://github.com/redboltz/mqtt_cpp 
