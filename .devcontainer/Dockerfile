@@ -14,3 +14,5 @@ RUN sudo apt install -y openjdk-17-jre
 
 RUN sudo apt install -y pip
 RUN pip install pytest requests
+
+RUN sudo apt update -y && sudo apt install mosquitto mosquitto-clients -y

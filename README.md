@@ -33,3 +33,13 @@ After building the SW, you can run ./App and open http://localhost:8000
    * (to update code from running ./App: `./update-api`)
    * `cd big-example-demo-client`
    * `py.test`
+
+## mosquitto
+
+Links: https://www.arubacloud.com/tutorial/how-to-install-and-secure-mosquitto-on-ubuntu-20-04.aspx
+
+The mosquitto broker (MQTT) is started in decontainer.json automatically.
+Try it out:
+
+  * Shell 1: `mosquitto_sub -h localhost -t /demo/data0`
+  * Shell 2: `mosquitto_pub -h localhost -t /demo/data0 -m "Hello"`
