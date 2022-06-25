@@ -1,0 +1,1 @@
+wget http://localhost:8000/api-docs/oas-3.0.0.json
