@@ -50,3 +50,15 @@ Try it out:
 ## TODO: C++ MQTT Service
 
   * Links: https://github.com/redboltz/mqtt_cpp 
+
+# msgpack, nlohmann
+
+## cpp_msgpack
+
+### Examples
+
+   ./build.sh
+   cd build
+   ./nlohmann           # creates msg.bin
+   hexdump -C msg.bin   # show hexdump
+   ./msgpack msg.bin    # show msg.bin as text
