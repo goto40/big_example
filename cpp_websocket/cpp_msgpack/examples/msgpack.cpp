@@ -2,8 +2,11 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <fstream>
+#include <iterator>
+#include <algorithm>
 
-int main()
+int main(int argc, char** argv)
 {
     msgpack::type::tuple<int, bool, std::string> src(1, true, "example");
 
@@ -35,6 +38,19 @@ int main()
     // or create the new instance
     msgpack::type::tuple<int, bool, std::string> dst2 =
         deserialized.as<msgpack::type::tuple<int, bool, std::string> >();
+
+    if (argc==2) {
+        std::ifstream ifile(argv[1], std::ios_base::binary);
+        std::vector<char> bin_data;
+        std::copy(
+            std::istreambuf_iterator<char>{ifile}, 
+            std::istreambuf_iterator<char>{}, 
+            std::back_insert_iterator(bin_data)
+        );
+
+        auto data = msgpack::unpack(bin_data.data(), bin_data.size());
+        std::cout << data.get() << "\n";
+    }
 
     return 0;
 }

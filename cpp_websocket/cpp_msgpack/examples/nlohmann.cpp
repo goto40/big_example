@@ -1,5 +1,8 @@
 #include <nlohmann/json.hpp>
 #include <iostream>
+#include <fstream>
+#include <iterator>
+#include <algorithm>
 
 int main() {
   nlohmann::json j2 = {
@@ -19,4 +22,12 @@ int main() {
     
     std::cout << j2;
 
+    static std::vector<std::uint8_t> bin = nlohmann::json::to_msgpack(j2);
+
+    std::ofstream ofile("msg.bin", std::ios_base::binary);
+    std::copy(
+        bin.begin(),
+        bin.end(),
+        std::ostreambuf_iterator<char>(ofile)
+    );
 }
