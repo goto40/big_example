@@ -3,9 +3,10 @@ project(websockets_with_msgpack)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(oatpp 1.3.0 REQUIRED)
+find_package(Seasocks REQUIRED)
 find_package(msgpack REQUIRED)
 find_package(nlohmann_json REQUIRED)
+find_package(ZLIB REQUIRED)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 
@@ -22,7 +23,7 @@ file(GLOB EXAMPLES examples/*.cpp)
 add_library(${PROJECT_NAME} ${SRC} ${version_file})
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME}
-    PUBLIC oatpp::oatpp
+    PUBLIC seasocks ZLIB::ZLIB
 )
 
 set(UNITTEST "${PROJECT_NAME}_unit_tests")

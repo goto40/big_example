@@ -20,3 +20,5 @@ RUN apt install -y libboost-dev nlohmann-json3-dev
 RUN git clone https://github.com/msgpack/msgpack-c.git
 RUN cd msgpack-c/ && git checkout cpp_master && mkdir build && cd build && cmake .. && make install
 
+RUN git clone https://github.com/mattgodbolt/seasocks.git
+RUN cd seasocks/ && mkdir build && cd build && cmake .. && make install
