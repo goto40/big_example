@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 2.8)
+project(websockets_with_msgpack)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(oatpp 1.3.0 REQUIRED)
+find_package(msgpack REQUIRED)
+find_package(nlohmann_json REQUIRED)
+
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
+
+include(Version) 
+find_path(CATCH_INCLUDE_PATH catch.hpp REQUIRED)
+
+include(CTest)
+enable_testing()
+
+file(GLOB_RECURSE SRC src/*.cpp)
+file(GLOB_RECURSE TST test/*.cpp)
+file(GLOB EXAMPLES examples/*.cpp)
+
+add_library(${PROJECT_NAME} ${SRC} ${version_file})
+target_include_directories(${PROJECT_NAME} PUBLIC src)
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC oatpp::oatpp
+)
+
+set(UNITTEST "${PROJECT_NAME}_unit_tests")
+add_executable(${UNITTEST} ${TST})
+target_include_directories(${UNITTEST} PRIVATE src)
+target_include_directories(${UNITTEST} PRIVATE test)
+target_include_directories(${UNITTEST} PRIVATE ${CATCH_INCLUDE_PATH})
+target_link_libraries(${UNITTEST} ${PROJECT_NAME})
+
+add_test(NAME unittest COMMAND ${UNITTEST})
+
+foreach(CPPFILE ${EXAMPLES})
+    get_filename_component(EXE_NAME ${CPPFILE} NAME_WLE)
+    add_executable(${EXE_NAME} ${CPPFILE})
+    target_include_directories(${PROJECT_NAME} PRIVATE src)
+    target_link_libraries(${EXE_NAME} ${PROJECT_NAME})
+endforeach()
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
