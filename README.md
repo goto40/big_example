@@ -62,3 +62,14 @@ Try it out:
    ./nlohmann           # creates msg.bin
    hexdump -C msg.bin   # show hexdump
    ./msgpack msg.bin    # show msg.bin as text
+
+### Examples, Websockets
+
+   ./build.sh
+   cd build
+   ./Websockets
+
+Then in ts-partner-manual
+
+   npm i
+   ./runme_while_Websockets_is_runnig.sh
