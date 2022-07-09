@@ -1,4 +1,6 @@
 import {WebSocket} from 'isomorphic-ws'
+import {encode, decode} from '@msgpack/msgpack'
+import {Buffer} from 'node:buffer'
 
 // npx tsx demo.ts 
 console.log("Websocket demo")
@@ -7,7 +9,13 @@ const ws = new WebSocket('ws://127.0.0.1:9090/');
 
 ws.onopen = function open() {
   console.log('connected');
-  ws.send(Date.now());
+  const data = {
+    name: "Hello World",
+    values: [1,2,3,4]
+  };
+  const encoded = encode(data);
+  const buffer: Buffer = Buffer.from(encoded.buffer, encoded.byteOffset, encoded.byteLength);
+  ws.send(buffer);
 };
 
 ws.onclose = function close() {
@@ -15,9 +23,6 @@ ws.onclose = function close() {
 };
 
 ws.onmessage = function incoming(data) {
-  console.log(`Roundtrip time: ${Date.now() - data.data} ms`);
-
-  setTimeout(function timeout() {
-    ws.send(Date.now());
-  }, 500);
+  const obj = decode(data);
+  console.log(obj)
 };
